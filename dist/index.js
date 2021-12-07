@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = void 0;
 let world = 'world';
-document.body.style.backgroundColor = "green";
+let bob = document.querySelector("body");
+bob.style.backgroundColor = "green";
 function hello(kek = world) {
     return `Hello ${kek}! `;
 }
