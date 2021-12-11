@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < 3; i++) {
         let temp_el = document.getElementById(stars_id[i]);
         stars.push(temp_el);
-        let compstyles = window.getComputedStyle(temp_el);
-        console.log(compstyles);
         //compstyles.setProperty("animation-play-state", "paused")
         temp_el.style.animationPlayState = "paused";
         //console.log(temp_el.style.animationPlayState)
