@@ -24,11 +24,23 @@ document.addEventListener('DOMContentLoaded', ()=>{
     for (let i=0; i<3; i++){
       stars[i].style.animationPlayState = "running"
     }
-    start_div.classList.add("hidden-class");
-})
+    start_div.classList.toggle("closed");
+    start_button.style.color = "black";
+    start_button.style.backgroundColor = "grey";
+    start_button.style.outline = "6px solid orange";
+  })
 
 })
 
 
+function load_physics(){
+}
+
+/*
+function move(dt){
+  x += vx * dt;
+  y += vy * dt;
+}
+*/
 
 
