@@ -3,8 +3,117 @@
 html {
   height: 100%;
   background: radial-gradient(ellipse at bottom, #010811 0%, #010411 100%);
-  overflow: hidden; }
+  overflow: hidden;}
 
+
+.parameter-box{
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255,135,0,0.2);
+  float: right;
+  height: auto;
+  min-height: 8em;
+  justify-content: space-between;
+  z-Index: 0;
+}
+
+.parameter-check{
+  background-color: orange;
+  height: 1em;
+  width: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.brake-button{
+  background-color: rgba(255, 135, 0, 1);
+  color: black;
+  cursor: pointer;
+  width: 8em;
+  float: right;
+  padding: 0.5em;
+  text-align: center;
+  margin: 3em;
+  font-family: "Inconsolata";
+  font-size: 2em;
+  font-weight: bold;
+  z-Index: 0;
+}
+
+.brake-button:hover{
+  outline: 6px solid orangered;
+}
+
+.shuttle{
+  position: absolute;
+  left: 30%;
+  top: 25%;
+  height: 40%;
+  width: auto;
+}
+
+.moon-image{
+  positioN: absolute;
+  width: 100%;
+}
+
+.restart-button{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  background-color: rgba(255, 135, 0, 1);
+  color: black;
+  cursor: pointer;
+  width: 8em;
+  float: right;
+  padding: 0.5em;
+  text-align: center;
+  margin: 3em;
+  font-family: "Inconsolata";
+  font-size: 2em;
+  font-weight: bold;
+}
+
+
+.end-screen{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background-color: green;
+  opacity: 0.3;
+  font-family: "Inconsolata";
+  font-weight: bold;
+  text-align: center;
+  font-size: 5vw;
+}
+
+.brake-button:active{
+  color: white;
+  background-color: orangered;
+  outline: 6px solid white;
+}
+
+.parameter{
+  color: white;
+  font-family: "Inconsolata";
+  margin-left: 1em;
+}
+
+.parameter-in-box{
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: flex-start;
+  margin-right: 2em;
+  margin-left: 2em;
+}
 
 .start-div{
   display: flex;
