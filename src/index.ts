@@ -6,12 +6,12 @@ shuttle_image.classList.add("shuttle")
 let velocity_hard = false
 let height_hard = false
 let fuel_hard = false
+let stars = []
 
 prepare_game();
 
 function prepare_game(){
   document.addEventListener('DOMContentLoaded', ()=>{
-    let stars = []
     let stars_id = ["stars", "stars2", "stars3"]
     for (let i=0; i<3; i++){
       let temp_el = <HTMLElement> document.getElementById(stars_id[i]);
@@ -20,7 +20,9 @@ function prepare_game(){
       temp_el.style.animationPlayState = "paused"
       //console.log(temp_el.style.animationPlayState)
       //console.log(compstyles.getPropertyValue("animation-play-state"))
+      
     }
+    stars[0].animationTimingFunction = "ease-in"
     let start_div = document.createElement('div');
     document.body.insertBefore(start_div, document.body.firstChild)
     start_div.classList.add("start-div")
@@ -99,12 +101,15 @@ function prepare_game(){
       control_div.appendChild(brake_button)
       
       height_check.addEventListener("click", () =>{
+        height_check.textContent = "X"
         height_hard = true
       })
       velocity_check.addEventListener("click", () =>{
+        velocity_check.textContent = "X"
         velocity_hard = true
       })
       fuel_check.addEventListener("click", () =>{
+        fuel_check.textContent = "X"
         fuel_hard = true
       })
 
@@ -125,10 +130,18 @@ function run_shuttle(height_value, velocity_value, fuel_value, brake_button){
     brake_state = true;
     shuttle_image.src = "tuba-brake.png"
     //alert("baua")
+    let temp_star_times = [25, 50, 75]
+    for (let i=0; i<3; i++){
+      //stars[i].style.animation = "animStar " + temp_star_times[i]+"s linear infinite"
+    }
   });
   brake_button.addEventListener("mouseup", () =>{
     brake_state = false;
     shuttle_image.src = "tuba-normal.png"
+    let temp_star_times = [50, 100, 150]
+    for (let i=0; i<3; i++){
+      //stars[i].style.animation = "animStar " + temp_star_times[i]+"s linear infinite"
+    }
   });
   
 
@@ -140,22 +153,23 @@ function run_shuttle(height_value, velocity_value, fuel_value, brake_button){
   let image_div = document.createElement("div");
   image_div.appendChild(moon_image)
   image_div.style.position = "relative";
-  image_div.style.bottom = "-700px"
-  let pixel_inc = -700
+  image_div.style.bottom = "-800px"
+  let pixel_inc = -800
   var intervalID = setInterval(function(){
     //alert(brake_state)
     let [show_height ,show_velocity] = shuttle.run_calc(brake_state);
     if (show_height <= 0 || shuttle.fuel <= 0){
       ending(intervalID)
     }
-    if (show_height <= 80000){
+    if (show_height <= moon_image.height*100){
       if (placed_image==false){
         document.body.insertBefore(image_div, document.body.firstChild)
         placed_image = true;
       }
       else{
-        pixel_inc += 5;
+        pixel_inc += Math.round(show_velocity/100);
         image_div.style.bottom = "" + pixel_inc + "px"
+        image_div.setAttribute("data-test", ""+pixel_inc)
         //alert(pixel_inc)
         /*
         let temp_width = moon_image.style.width.replace("px", "");
@@ -199,6 +213,10 @@ function ending(intervalID){
   else if (shuttle.velocity < 10){
     end_screen.style.backgroundColor = "green";
     end_screen.textContent = "SUCCESS!"
+  }
+
+  for (let i=0; i<3; i++){
+    stars[i].style.animationPlayState = "paused";
   }
   //alert("bnfdu")
   //alert(end_screen.style.backgroundColor)
