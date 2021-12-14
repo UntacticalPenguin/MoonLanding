@@ -148,13 +148,13 @@ function run_shuttle(height_value, velocity_value, fuel_value, brake_button){
     if (show_height <= 0 || shuttle.fuel <= 0){
       ending(intervalID)
     }
-    if (show_height <= 160000){
+    if (show_height <= 80000){
       if (placed_image==false){
         document.body.insertBefore(image_div, document.body.firstChild)
         placed_image = true;
       }
       else{
-        pixel_inc += 2;
+        pixel_inc += 5;
         image_div.style.bottom = "" + pixel_inc + "px"
         //alert(pixel_inc)
         /*
